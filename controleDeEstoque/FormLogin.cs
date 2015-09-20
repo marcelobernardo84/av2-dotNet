@@ -54,6 +54,7 @@ namespace controleDeEstoque
                         login.Id = Int32.Parse(dataReader["EmployeeID"].ToString());
                         MessageBox.Show("Nome: " + login.Nome + " Senha: " + login.Id);
                     }
+                    sqlConn.Close();
                 }
             }
         }
