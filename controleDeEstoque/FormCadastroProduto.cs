@@ -1,0 +1,156 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace controleDeEstoque
+{
+    public partial class FormCadastroProduto : Form
+    {
+        public FormCadastroProduto()
+        {
+            InitializeComponent();
+        }
+        
+        private void bloquearTextBox()
+        {
+            textCod.Enabled = false;
+            textName.Enabled = false;
+            textIdFor.Enabled = false;
+            textValorUni.Enabled = false;
+            textQuantidade.Enabled = false;            
+        }
+
+        private void desBloquearTextBox()
+        {
+            textName.Enabled = true;
+            textIdFor.Enabled = true;
+            textValorUni.Enabled = true;
+            textQuantidade.Enabled = true;
+        }
+
+        private void buttonPesquisar_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection sqlConn =
+                    new SqlConnection("Data Source=(localdb)\\Estoque;Initial Catalog=northwind;Integrated Security=True"))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand())
+                {
+                    sqlCommand.Parameters.AddWithValue("PName", textPesquisa.Text);
+                    sqlCommand.CommandText = "SELECT ProductID, ProductName," +
+                    "SupplierID, UnitPrice, UnitsInStock FROM Products WHERE ProductName= @PName";
+                    sqlCommand.Connection = sqlConn;
+                    sqlConn.Open();
+                    SqlDataReader dataReader;
+                    dataReader = sqlCommand.ExecuteReader(); //para caso que retorna registros
+                    if (dataReader.Read()) //encontrou registro
+                    {
+                        textCod.Text = dataReader["ProductID"].ToString();
+                        textName.Text = dataReader["ProductName"].ToString();
+                        textIdFor.Text = dataReader["SupplierID"].ToString();
+                        textValorUni.Text = dataReader["UnitPrice"].ToString();
+                        textQuantidade.Text = dataReader["UnitsInStock"].ToString();
+                        Produto p = new Produto();
+                    }
+                    else
+                    {
+                        textCod.Text = "";
+                        textName.Text = "";
+                        textIdFor.Text = "";
+                        textValorUni.Text = "";
+                        textQuantidade.Text = "";
+                    }
+                    sqlConn.Close();
+                }
+            }
+
+        }
+
+        private void FormCadastroProduto_Load(object sender, EventArgs e)
+        {
+            bloquearTextBox();
+        }
+
+        private void buttonAlterar_Click(object sender, EventArgs e)
+        {
+            desBloquearTextBox();
+        }
+
+        private void buttonSalvar_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection sqlConn =
+                    new SqlConnection("Data Source=(localdb)\\Estoque;Initial Catalog=northwind;Integrated Security=True"))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand())
+                {
+                    sqlCommand.Parameters.AddWithValue("PId", textCod.Text);
+                    sqlCommand.CommandText = "SELECT count(ProductID)" +
+                        "FROM Products WHERE ProductID= @PId";
+                    sqlCommand.Connection = sqlConn;
+                    sqlConn.Open();
+                    SqlDataReader dataReader;
+                    dataReader = sqlCommand.ExecuteReader(); //para caso que retorna registros
+                    if (dataReader.Read()) //encontrou registro
+                    {
+                        if(Int32.Parse(dataReader[0].ToString()) == 1)
+                        {
+                            sqlConn.Close();
+                            sqlCommand.Parameters.AddWithValue("PName", textName.Text);
+                            sqlCommand.Parameters.AddWithValue("PIdFor", textIdFor.Text);
+                            sqlCommand.Parameters.AddWithValue("PValorUni", textValorUni.Text);
+                            sqlCommand.Parameters.AddWithValue("PQuantidade", textQuantidade.Text);
+                            sqlCommand.CommandText = "UPDATE Products SET ProductName = @PName," +
+                                "SupplierID = @PIdFor, UnitPrice = @PIdFor," +
+                                "UnitsInStock = @PQuantidade where ProductID = @PId";
+                            sqlConn.Open();
+                            if (sqlCommand.ExecuteNonQuery() > 0)
+                            {
+                                MessageBox.Show("Produto atualizado com sucesso!");
+                            } 
+                            else
+                            {
+                                MessageBox.Show("Deu Ruim");
+                            }
+                            sqlConn.Close();
+                        }
+                        else
+                        {
+                            sqlConn.Close();
+                            sqlCommand.Parameters.AddWithValue("PName", textName.Text);
+                            sqlCommand.Parameters.AddWithValue("PIdFor", textIdFor.Text);
+                            sqlCommand.Parameters.AddWithValue("PValorUni", textValorUni.Text);
+                            sqlCommand.Parameters.AddWithValue("PQuantidade", textQuantidade.Text);
+                            sqlCommand.CommandText = "INSERT into Products (ProductName,SupplierID," +
+                                "UnitPrice,UnitsInStock) values (@PName,@PIdFor,@PIdFor,@PQuantidade)";
+                            sqlConn.Open();
+                            if (sqlCommand.ExecuteNonQuery() > 0)
+                            {
+                                MessageBox.Show("Produto adicionado com sucesso!");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Produto nao adicionado");
+                            }
+                            sqlConn.Close();
+                        }
+                    }
+                    else
+                    {
+                        textCod.Text = "";
+                        textName.Text = "";
+                        textIdFor.Text = "";
+                        textValorUni.Text = "";
+                        textQuantidade.Text = "";
+                    }
+                    sqlConn.Close();
+                }
+            }
+        }
+    }
+}

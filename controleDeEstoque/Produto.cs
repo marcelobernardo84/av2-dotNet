@@ -30,6 +30,9 @@ namespace controleDeEstoque
             set { precoUnitarioCompra = value; }
         }
 
+        public Produto()
+        {
+        }
 
         public Produto(int id, string nome, int idFornecedor, decimal precoUnitario, double quantidade)
         {

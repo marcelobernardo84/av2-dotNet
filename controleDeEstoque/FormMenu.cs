@@ -34,7 +34,10 @@ namespace controleDeEstoque
         {
             if (Operador.type == 0)
             {
-                MessageBox.Show("OK");
+                FormCadastroProduto cp = new FormCadastroProduto();
+                cp.Show();
+                this.Visible = false;
+
             }
             else
                 MessageBox.Show("O seu Login não tem para esta Opção!");
