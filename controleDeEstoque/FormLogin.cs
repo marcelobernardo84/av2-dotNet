@@ -14,7 +14,7 @@ namespace controleDeEstoque
     public partial class FormLogin : Form
     {
         Operador login;
-        
+                
         public FormLogin()
         {
             InitializeComponent();
@@ -61,7 +61,6 @@ namespace controleDeEstoque
                             FormMenu frm = new FormMenu();
                             frm.Show();
                             this.Visible = false;
-                            //MessageBox.Show("Nome: " + login.Nome + " Senha: " + login.Id);
                         }
                         else
                         {
@@ -73,12 +72,5 @@ namespace controleDeEstoque
             }
         }
 
-        private void buttonConfirm_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonConfirm_Click(sender, e);
-            }
-        }
     }
 }

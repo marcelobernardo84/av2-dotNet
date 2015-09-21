@@ -38,7 +38,7 @@
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(12, 76);
+            this.textBoxLogin.Location = new System.Drawing.Point(12, 44);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(100, 20);
             this.textBoxLogin.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // textBoxPass
             // 
-            this.textBoxPass.Location = new System.Drawing.Point(12, 141);
+            this.textBoxPass.Location = new System.Drawing.Point(12, 107);
             this.textBoxPass.Name = "textBoxPass";
             this.textBoxPass.Size = new System.Drawing.Size(100, 20);
             this.textBoxPass.TabIndex = 1;
@@ -54,20 +54,19 @@
             // 
             // buttonConfirm
             // 
-            this.buttonConfirm.Location = new System.Drawing.Point(38, 196);
+            this.buttonConfirm.Location = new System.Drawing.Point(37, 176);
             this.buttonConfirm.Name = "buttonConfirm";
-            this.buttonConfirm.Size = new System.Drawing.Size(75, 23);
+            this.buttonConfirm.Size = new System.Drawing.Size(75, 34);
             this.buttonConfirm.TabIndex = 2;
             this.buttonConfirm.Text = "Enviar";
             this.buttonConfirm.UseVisualStyleBackColor = true;
             this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
-            this.buttonConfirm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.buttonConfirm_KeyUp);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(175, 196);
+            this.buttonCancel.Location = new System.Drawing.Point(174, 176);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 34);
             this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -76,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 60);
+            this.label1.Location = new System.Drawing.Point(9, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 4;
@@ -85,7 +84,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 122);
+            this.label2.Location = new System.Drawing.Point(12, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 5;
