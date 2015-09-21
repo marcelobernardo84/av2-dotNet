@@ -16,5 +16,22 @@ namespace controleDeEstoque
         {
             InitializeComponent();
         }
+
+        private void vendaMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void opMenu_Click(object sender, EventArgs e)
+        {
+            FormVendas v = new FormVendas();
+            v.Show();
+            this.Visible = false;
+        }
+
+        private void prodMenu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

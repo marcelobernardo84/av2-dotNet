@@ -13,8 +13,8 @@ namespace controleDeEstoque
 {
     public partial class FormLogin : Form
     {
-        Login login;
-
+        Operador login;
+        
         public FormLogin()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace controleDeEstoque
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-
+            Application.Exit(); 
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
@@ -41,21 +41,43 @@ namespace controleDeEstoque
             {
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
-                    sqlCommand.Parameters.AddWithValue("PId", textBoxPass.Text);
-                    sqlCommand.CommandText = "SELECT EmployeeID, FirstName FROM Employees WHERE EmployeeID= @PId";
-                    sqlCommand.Connection = sqlConn;
-                    sqlConn.Open();
-                    SqlDataReader dataReader;
-                    dataReader = sqlCommand.ExecuteReader();
-                    if (dataReader.Read())
+                    if ((textBoxLogin.Text != "") && (textBoxPass.Text != ""))
                     {
-                        login = new Login();
-                        login.Nome = dataReader["FirstName"].ToString();
-                        login.Id = Int32.Parse(dataReader["EmployeeID"].ToString());
-                        MessageBox.Show("Nome: " + login.Nome + " Senha: " + login.Id);
+                        sqlCommand.Parameters.AddWithValue("Log", textBoxLogin.Text);
+                        sqlCommand.Parameters.AddWithValue("Pass", textBoxPass.Text);
+                        sqlCommand.CommandText = "SELECT ID, login, secret, tipo FROM Employees WHERE Login= @Log AND Secret= @Pass";
+                        sqlCommand.Connection = sqlConn;
+                        sqlConn.Open();
+                        SqlDataReader dataReader;
+                        dataReader = sqlCommand.ExecuteReader();
+
+                        if (dataReader.Read())
+                        {
+                            login = new Operador();
+                            login.Login = dataReader["Login"].ToString();
+                            login.Id = Int32.Parse(dataReader["ID"].ToString());
+                            login.Senha = Int32.Parse(dataReader["Secret"].ToString());
+                            login.Tipo = Int32.Parse(dataReader["Tipo"].ToString());
+                            FormMenu frm = new FormMenu();
+                            frm.Show();
+                            this.Visible = false;
+                            //MessageBox.Show("Nome: " + login.Nome + " Senha: " + login.Id);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Login não encontrado");
+                        }
+                        sqlConn.Close();                        
                     }
-                    sqlConn.Close();
                 }
+            }
+        }
+
+        private void buttonConfirm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonConfirm_Click(sender, e);
             }
         }
     }
