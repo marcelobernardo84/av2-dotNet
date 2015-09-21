@@ -32,7 +32,7 @@ namespace controleDeEstoque
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            Application.Exit(); 
+            Application.Exit();
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
