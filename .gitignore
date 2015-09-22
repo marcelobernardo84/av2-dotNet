@@ -154,3 +154,5 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+/controleDeEstoque/northwindDataSet1.xsc
+/controleDeEstoque/northwindDataSet1.xss

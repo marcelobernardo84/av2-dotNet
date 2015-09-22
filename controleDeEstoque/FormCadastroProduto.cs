@@ -13,6 +13,7 @@ namespace controleDeEstoque
 {
     public partial class FormCadastroProduto : Form
     {
+        Produto p;
         public FormCadastroProduto()
         {
             InitializeComponent();
@@ -35,6 +36,16 @@ namespace controleDeEstoque
             textQuantidade.Enabled = true;
         }
 
+        private void limparTextBox()
+        {
+            textCod.Text = "";
+            textName.Text = "";
+            textIdFor.Text = "";
+            textValorUni.Text = "";
+            textQuantidade.Text = "";
+        }
+
+
         private void buttonPesquisar_Click(object sender, EventArgs e)
         {
             using (SqlConnection sqlConn =
@@ -55,8 +66,7 @@ namespace controleDeEstoque
                         textName.Text = dataReader["ProductName"].ToString();
                         textIdFor.Text = dataReader["SupplierID"].ToString();
                         textValorUni.Text = dataReader["UnitPrice"].ToString();
-                        textQuantidade.Text = dataReader["UnitsInStock"].ToString();
-                        Produto p = new Produto();
+                        textQuantidade.Text = dataReader["UnitsInStock"].ToString();                        
                     }
                     else
                     {
@@ -101,13 +111,14 @@ namespace controleDeEstoque
                         if(Int32.Parse(dataReader[0].ToString()) == 1)
                         {
                             sqlConn.Close();
-                            sqlCommand.Parameters.AddWithValue("PName", textName.Text);
-                            sqlCommand.Parameters.AddWithValue("PIdFor", textIdFor.Text);
-                            sqlCommand.Parameters.AddWithValue("PValorUni", textValorUni.Text);
-                            sqlCommand.Parameters.AddWithValue("PQuantidade", textQuantidade.Text);
-                            sqlCommand.CommandText = "UPDATE Products SET ProductName = @PName," +
-                                "SupplierID = @PIdFor, UnitPrice = @PIdFor," +
-                                "UnitsInStock = @PQuantidade where ProductID = @PId";
+                            p = new Produto(Int32.Parse(textCod.Text.ToString()),
+                                textName.Text.ToString(),
+                                Int32.Parse(textIdFor.Text.ToString()),
+                                Decimal.Parse(textValorUni.Text.ToString()),
+                                Double.Parse(textQuantidade.Text));
+                            sqlCommand.CommandText = "UPDATE Products SET ProductName = '" + p.Nome +"'," +
+                                "SupplierID = '" + p.IdFornecedor + "', UnitPrice = '" + p.PrecoUnitarioVenda + "'," +
+                                "UnitsInStock = '" + p.Quantidade + "' where ProductID = '" + p.Id + "'";
                             sqlConn.Open();
                             if (sqlCommand.ExecuteNonQuery() > 0)
                             {
@@ -115,19 +126,21 @@ namespace controleDeEstoque
                             } 
                             else
                             {
-                                MessageBox.Show("Deu Ruim");
+                                MessageBox.Show("Falha ao atualizar");
                             }
                             sqlConn.Close();
                         }
                         else
                         {
                             sqlConn.Close();
-                            sqlCommand.Parameters.AddWithValue("PName", textName.Text);
-                            sqlCommand.Parameters.AddWithValue("PIdFor", textIdFor.Text);
-                            sqlCommand.Parameters.AddWithValue("PValorUni", textValorUni.Text);
-                            sqlCommand.Parameters.AddWithValue("PQuantidade", textQuantidade.Text);
+                            p = new Produto(Int32.Parse(textCod.Text.ToString()),
+                                textName.Text.ToString(),
+                                Int32.Parse(textIdFor.Text.ToString()),
+                                Decimal.Parse(textValorUni.Text.ToString()),
+                                Double.Parse(textQuantidade.Text));
                             sqlCommand.CommandText = "INSERT into Products (ProductName,SupplierID," +
-                                "UnitPrice,UnitsInStock) values (@PName,@PIdFor,@PIdFor,@PQuantidade)";
+                                "UnitPrice,UnitsInStock) values ('" + p.Nome+ "', '" + p.IdFornecedor +
+                                "', '" + p.PrecoUnitarioVenda + "', '" + p.Quantidade +"')";                            
                             sqlConn.Open();
                             if (sqlCommand.ExecuteNonQuery() > 0)
                             {
@@ -137,7 +150,7 @@ namespace controleDeEstoque
                             {
                                 MessageBox.Show("Produto nao adicionado");
                             }
-                            sqlConn.Close();
+                            sqlConn.Close();                            
                         }
                     }
                     else
@@ -149,8 +162,23 @@ namespace controleDeEstoque
                         textQuantidade.Text = "";
                     }
                     sqlConn.Close();
+                    bloquearTextBox();
                 }
             }
+        }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            FormMenu fm = new FormMenu();
+            fm.Show();
+            this.Visible = false;
+        }
+
+        private void buttonNovo_Click(object sender, EventArgs e)
+        {
+            limparTextBox();
+            desBloquearTextBox();
+            textCod.Text = "-1";
         }
     }
 }

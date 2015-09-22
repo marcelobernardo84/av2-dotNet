@@ -21,16 +21,6 @@ namespace controleDeEstoque
             InitializeComponent();
         }
 
-        /*private void FormVendas_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'northwindDataSet1.Products' table. You can move, or remove it, as needed.
-            this.productsTableAdapter.Fill(this.northwindDataSet1.Products);
-            // TODO: This line of code loads data into the 'northwindDataSet.Products' table. You can move, or remove it, as needed.
-            this.productsTableAdapter.Fill(this.northwindDataSet.Products);
-
-        }8
-         */
-
         private void fillByToolStripButton_Click(object sender, EventArgs e)
         {
             try

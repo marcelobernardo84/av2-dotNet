@@ -9,6 +9,7 @@ namespace controleDeEstoque
     class Operador
     {
         public static int type;
+        
         private int id;
         private string nome;
         private int senha;
@@ -16,6 +17,27 @@ namespace controleDeEstoque
         private string endereco;
         private string telefone;
         private string login;
+        private string sobrenome;
+
+        public string Sobrenome
+        {
+            get { return sobrenome; }
+            set { sobrenome = value; }
+        }
+        
+
+        public Operador() { }
+        public Operador(int id, string nome, string sobrenome, string endereco, string telefone, string login,
+                        int senha, int tipo)
+        {
+            this.Id = id;
+            this.Nome = nome;
+            this.Endereco = endereco;
+            this.Telefone = telefone;
+            this.Login = login;
+            this.Senha = senha;
+            this.Tipo = tipo;
+        }
 
         public string Login
         {

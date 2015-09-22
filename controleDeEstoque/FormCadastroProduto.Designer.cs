@@ -40,17 +40,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonNovo = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.buttonAlterar = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonPesquisar
             // 
-            this.buttonPesquisar.Location = new System.Drawing.Point(383, 11);
+            this.buttonPesquisar.Location = new System.Drawing.Point(287, 9);
             this.buttonPesquisar.Name = "buttonPesquisar";
-            this.buttonPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.buttonPesquisar.Size = new System.Drawing.Size(60, 23);
             this.buttonPesquisar.TabIndex = 0;
             this.buttonPesquisar.Text = "Pesquisar";
             this.buttonPesquisar.UseVisualStyleBackColor = true;
@@ -75,7 +75,7 @@
             // 
             // textPesquisa
             // 
-            this.textPesquisa.Location = new System.Drawing.Point(256, 13);
+            this.textPesquisa.Location = new System.Drawing.Point(181, 12);
             this.textPesquisa.Name = "textPesquisa";
             this.textPesquisa.Size = new System.Drawing.Size(100, 20);
             this.textPesquisa.TabIndex = 3;
@@ -145,20 +145,21 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Quantidade em estoque";
             // 
-            // button2
+            // buttonNovo
             // 
-            this.button2.Location = new System.Drawing.Point(51, 221);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Novo";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonNovo.Location = new System.Drawing.Point(19, 219);
+            this.buttonNovo.Name = "buttonNovo";
+            this.buttonNovo.Size = new System.Drawing.Size(75, 31);
+            this.buttonNovo.TabIndex = 12;
+            this.buttonNovo.Text = "Novo";
+            this.buttonNovo.UseVisualStyleBackColor = true;
+            this.buttonNovo.Click += new System.EventHandler(this.buttonNovo_Click);
             // 
             // buttonSalvar
             // 
-            this.buttonSalvar.Location = new System.Drawing.Point(197, 220);
+            this.buttonSalvar.Location = new System.Drawing.Point(100, 219);
             this.buttonSalvar.Name = "buttonSalvar";
-            this.buttonSalvar.Size = new System.Drawing.Size(75, 23);
+            this.buttonSalvar.Size = new System.Drawing.Size(75, 31);
             this.buttonSalvar.TabIndex = 13;
             this.buttonSalvar.Text = "Salvar";
             this.buttonSalvar.UseVisualStyleBackColor = true;
@@ -166,32 +167,33 @@
             // 
             // buttonAlterar
             // 
-            this.buttonAlterar.Location = new System.Drawing.Point(351, 220);
+            this.buttonAlterar.Location = new System.Drawing.Point(181, 219);
             this.buttonAlterar.Name = "buttonAlterar";
-            this.buttonAlterar.Size = new System.Drawing.Size(75, 23);
+            this.buttonAlterar.Size = new System.Drawing.Size(75, 31);
             this.buttonAlterar.TabIndex = 14;
             this.buttonAlterar.Text = "Alterar";
             this.buttonAlterar.UseVisualStyleBackColor = true;
             this.buttonAlterar.Click += new System.EventHandler(this.buttonAlterar_Click);
             // 
-            // button5
+            // buttonCancelar
             // 
-            this.button5.Location = new System.Drawing.Point(504, 219);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 15;
-            this.button5.Text = "Cancelar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Location = new System.Drawing.Point(262, 219);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(75, 31);
+            this.buttonCancelar.TabIndex = 15;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // FormCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 262);
-            this.Controls.Add(this.button5);
+            this.ClientSize = new System.Drawing.Size(359, 262);
+            this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAlterar);
             this.Controls.Add(this.buttonSalvar);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonNovo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -226,9 +228,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonNovo;
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.Button buttonAlterar;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonCancelar;
     }
 }

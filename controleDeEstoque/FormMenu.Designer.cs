@@ -31,13 +31,14 @@
             this.buttonVender = new System.Windows.Forms.Button();
             this.buttonOperador = new System.Windows.Forms.Button();
             this.buttonProduto = new System.Windows.Forms.Button();
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonVender
             // 
             this.buttonVender.Location = new System.Drawing.Point(28, 39);
             this.buttonVender.Name = "buttonVender";
-            this.buttonVender.Size = new System.Drawing.Size(75, 23);
+            this.buttonVender.Size = new System.Drawing.Size(244, 23);
             this.buttonVender.TabIndex = 0;
             this.buttonVender.Text = "Vender";
             this.buttonVender.UseVisualStyleBackColor = true;
@@ -45,9 +46,9 @@
             // 
             // buttonOperador
             // 
-            this.buttonOperador.Location = new System.Drawing.Point(31, 100);
+            this.buttonOperador.Location = new System.Drawing.Point(28, 68);
             this.buttonOperador.Name = "buttonOperador";
-            this.buttonOperador.Size = new System.Drawing.Size(75, 23);
+            this.buttonOperador.Size = new System.Drawing.Size(244, 23);
             this.buttonOperador.TabIndex = 1;
             this.buttonOperador.Text = "Operador";
             this.buttonOperador.UseVisualStyleBackColor = true;
@@ -55,19 +56,30 @@
             // 
             // buttonProduto
             // 
-            this.buttonProduto.Location = new System.Drawing.Point(35, 162);
+            this.buttonProduto.Location = new System.Drawing.Point(28, 97);
             this.buttonProduto.Name = "buttonProduto";
-            this.buttonProduto.Size = new System.Drawing.Size(75, 23);
+            this.buttonProduto.Size = new System.Drawing.Size(244, 23);
             this.buttonProduto.TabIndex = 2;
             this.buttonProduto.Text = "Produto";
             this.buttonProduto.UseVisualStyleBackColor = true;
             this.buttonProduto.Click += new System.EventHandler(this.buttonProduto_Click);
+            // 
+            // buttonLogout
+            // 
+            this.buttonLogout.Location = new System.Drawing.Point(113, 162);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(75, 23);
+            this.buttonLogout.TabIndex = 3;
+            this.buttonLogout.Text = "Logout";
+            this.buttonLogout.UseVisualStyleBackColor = true;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonProduto);
             this.Controls.Add(this.buttonOperador);
             this.Controls.Add(this.buttonVender);
@@ -82,6 +94,7 @@
         private System.Windows.Forms.Button buttonVender;
         private System.Windows.Forms.Button buttonOperador;
         private System.Windows.Forms.Button buttonProduto;
+        private System.Windows.Forms.Button buttonLogout;
 
     }
 }

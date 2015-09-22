@@ -27,6 +27,9 @@ namespace controleDeEstoque
 
         private void buttonOperador_Click(object sender, EventArgs e)
         {
+            FormOperador op = new FormOperador();
+            op.Show();
+            this.Visible = false;
             
         }
 
@@ -41,6 +44,13 @@ namespace controleDeEstoque
             }
             else
                 MessageBox.Show("O seu Login não tem para esta Opção!");
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            FormLogin fl = new FormLogin();
+            fl.Show();
+            this.Visible = false;
         }        
     }
 }

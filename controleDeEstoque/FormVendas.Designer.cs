@@ -77,7 +77,7 @@
             // 
             // textBoxQuantidade
             // 
-            this.textBoxQuantidade.Location = new System.Drawing.Point(433, 10);
+            this.textBoxQuantidade.Location = new System.Drawing.Point(288, 10);
             this.textBoxQuantidade.Name = "textBoxQuantidade";
             this.textBoxQuantidade.Size = new System.Drawing.Size(100, 20);
             this.textBoxQuantidade.TabIndex = 2;
@@ -95,7 +95,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(362, 13);
+            this.label2.Location = new System.Drawing.Point(217, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 4;
@@ -153,7 +153,7 @@
             // 
             // buttonAdCarrinho
             // 
-            this.buttonAdCarrinho.Location = new System.Drawing.Point(193, 51);
+            this.buttonAdCarrinho.Location = new System.Drawing.Point(118, 51);
             this.buttonAdCarrinho.Name = "buttonAdCarrinho";
             this.buttonAdCarrinho.Size = new System.Drawing.Size(96, 38);
             this.buttonAdCarrinho.TabIndex = 10;
@@ -163,7 +163,7 @@
             // 
             // buttonFimVenda
             // 
-            this.buttonFimVenda.Location = new System.Drawing.Point(365, 51);
+            this.buttonFimVenda.Location = new System.Drawing.Point(220, 51);
             this.buttonFimVenda.Name = "buttonFimVenda";
             this.buttonFimVenda.Size = new System.Drawing.Size(96, 38);
             this.buttonFimVenda.TabIndex = 11;
@@ -200,7 +200,7 @@
             // 
             // Cancelar
             // 
-            this.Cancelar.Location = new System.Drawing.Point(523, 51);
+            this.Cancelar.Location = new System.Drawing.Point(322, 51);
             this.Cancelar.Name = "Cancelar";
             this.Cancelar.Size = new System.Drawing.Size(88, 38);
             this.Cancelar.TabIndex = 14;
@@ -210,7 +210,7 @@
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(656, 10);
+            this.buttonLogout.Location = new System.Drawing.Point(434, 8);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(53, 23);
             this.buttonLogout.TabIndex = 15;
@@ -222,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 527);
+            this.ClientSize = new System.Drawing.Size(664, 527);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.Cancelar);
             this.Controls.Add(this.label5);
